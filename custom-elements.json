@@ -4,6 +4,121 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "api/badgeRoster.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "handler",
+          "parameters": [
+            {
+              "name": "req"
+            },
+            {
+              "name": "res"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "handler",
+            "module": "api/badgeRoster.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/badge-element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "BadgeElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "badgeTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\" \"",
+              "privacy": "public",
+              "attribute": "badgeTitle"
+            },
+            {
+              "kind": "field",
+              "name": "badgeIcon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\" \"",
+              "privacy": "public",
+              "attribute": "badgeIcon"
+            },
+            {
+              "kind": "field",
+              "name": "badgeIconColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\" \"",
+              "privacy": "public",
+              "attribute": "badgeIconColor"
+            },
+            {
+              "kind": "field",
+              "name": "badgeDescription",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Temporary description\"",
+              "privacy": "public",
+              "attribute": "badgeDescription"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "badgeIcon",
+              "fieldName": "badgeIcon"
+            },
+            {
+              "name": "badgeTitle",
+              "fieldName": "badgeTitle"
+            },
+            {
+              "name": "badgeIconColor",
+              "fieldName": "badgeIconColor"
+            },
+            {
+              "name": "badgeDescription",
+              "fieldName": "badgeDescription"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "badge-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "badge-element",
+          "declaration": {
+            "name": "BadgeElement",
+            "module": "src/badge-element.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/badge-list.js",
       "declarations": [
         {
@@ -12,20 +127,57 @@
           "name": "BadgeList",
           "members": [
             {
+              "kind": "method",
+              "name": "getSearchResults",
+              "parameters": [
+                {
+                  "name": "value",
+                  "default": "''"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSearchEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
               "kind": "field",
-              "name": "header",
+              "name": "overlayBadgeText",
               "type": {
                 "text": "string"
               },
-              "default": "'My app'",
+              "default": "\"Badges >\""
+            },
+            {
+              "kind": "field",
+              "name": "badges",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
               "privacy": "public",
-              "attribute": "header"
+              "attribute": "badges"
+            },
+            {
+              "kind": "field",
+              "name": "badgeTitle",
+              "privacy": "public",
+              "attribute": "badgeTitle"
             }
           ],
           "attributes": [
             {
-              "name": "header",
-              "fieldName": "header"
+              "name": "badges",
+              "fieldName": "badges"
+            },
+            {
+              "name": "badgeTitle",
+              "fieldName": "badgeTitle"
             }
           ],
           "superclass": {
@@ -43,6 +195,165 @@
           "declaration": {
             "name": "BadgeList",
             "module": "src/badge-list.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/page-overlay.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PageOverlay",
+          "members": [
+            {
+              "kind": "field",
+              "name": "badgeTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Amazon Cognito\"",
+              "privacy": "public",
+              "attribute": "badgeTitle",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "overlayTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Amazon Web Services Intro\"",
+              "privacy": "public",
+              "attribute": "overlayTitle",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "overlayParagraph",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Here you will learn how to set up an account for AWS, how to create a root user, a I AM user account, set up MFA on your Root and I AM accounts, set up a user pool in Amazon Cognito, how to upload and use Amazon S3, and how to use Amazon Lambda.\"",
+              "privacy": "public",
+              "attribute": "overlayParagraph",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "overlayBadgeText",
+              "privacy": "public",
+              "attribute": "overlayBadgeText",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "badgeTitle",
+              "fieldName": "badgeTitle"
+            },
+            {
+              "name": "overlayTitle",
+              "fieldName": "overlayTitle"
+            },
+            {
+              "name": "overlayParagraph",
+              "fieldName": "overlayParagraph"
+            },
+            {
+              "name": "overlayBadgeText",
+              "fieldName": "overlayBadgeText"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "page-overlay",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "page-overlay",
+          "declaration": {
+            "name": "PageOverlay",
+            "module": "src/page-overlay.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/search-bar.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SearchBar",
+          "members": [
+            {
+              "kind": "method",
+              "name": "searchInput",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "privacy": "public",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "header",
+              "privacy": "public",
+              "attribute": "header"
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "header",
+              "fieldName": "header"
+            },
+            {
+              "name": "value",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "search-bar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "search-bar",
+          "declaration": {
+            "name": "SearchBar",
+            "module": "src/search-bar.js"
           }
         }
       ]

@@ -68,17 +68,6 @@ class PageOverlay extends LitElement {
         --simple-icon-height: 100px;
         --simple-icon-color: white;
     }
-
-    .bottom-overlay-text {
-        color: black;
-        font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
-        font-size: 28px;
-        font-weight: lighter;
-        text-align: left;
-        margin-top: 10px;
-        margin-left: 30px;
-    }
-
     `;
 
     constructor() {
@@ -86,7 +75,6 @@ class PageOverlay extends LitElement {
         this.badgeTitle = "Amazon Cognito";
         this.overlayTitle = "Amazon Web Services Intro";
         this.overlayParagraph = "Here you will learn how to set up an account for AWS, how to create a root user, a I AM user account, set up MFA on your Root and I AM accounts, set up a user pool in Amazon Cognito, how to upload and use Amazon S3, and how to use Amazon Lambda.";
-        this.overlayBadgeText = "Badges >"
     }
     
     render() {
@@ -102,7 +90,6 @@ class PageOverlay extends LitElement {
             </div>
             <p class="top-text-box">${this.overlayParagraph}</p>
             <slot name="searchBar"></slot>
-            <div class="bottom-overlay-text">${this.overlayBadgeText}</div>
             <slot name="badge"></slot>
         </div>
     `;

@@ -5,13 +5,12 @@ import "@lrnwebcomponents/simple-icon/lib/simple-icons.js";
 class SearchBar extends LitElement {
     static properties = {
       header: { type: String },
+      value: { type: String },
     }
 
     static get styles() {
       return css`
 
-    
-    
       .col-lg-12 { 
         position: relative; 
         min-height: 1px; 
@@ -19,30 +18,23 @@ class SearchBar extends LitElement {
         padding-right: 15px;
       } 
     }     
-    
-    
       .page-content { 
         margin-top: 0px; 
         padding: 0px;
       } 
     }     
-    
-    
       .page-container { 
         margin: 0px; 
         padding: 20px 20px 0 20px; 
         position: relative;
       } 
-    
       main.page-container { 
         max-width: 1310px; 
         margin: 0 auto;
       } 
-    
       .page-header-fixed .page-container { 
         margin-top: 75px;
       } 
-    
       body { 
         margin:    0px !important; 
         font-family:    "effra", sans-serif; 
@@ -55,7 +47,6 @@ class SearchBar extends LitElement {
         -webkit-font-smoothing:  antialiased;
         background: #e9ecf3;
       } 
-    
       html { 
         font-family:  sans-serif; 
         -ms-text-size-adjust:  100%; 
@@ -63,9 +54,6 @@ class SearchBar extends LitElement {
         font-size: 10px; 
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       } 
-    
-
-    
       .form-control { 
         width: 100%; 
         height: 32px; 
@@ -96,7 +84,6 @@ class SearchBar extends LitElement {
         -o-border-radius: 4px; 
         border-radius: 4px;
       } 
-  
       .searchbutton {
         border-width: 0; 
         padding: 7px 14px; 
@@ -109,7 +96,6 @@ class SearchBar extends LitElement {
         box-shadow: none; 
         text-shadow: none;
       }
-
       .search-container { 
         background-color: white;
         margin-top: 30px; 
@@ -119,24 +105,19 @@ class SearchBar extends LitElement {
         box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.3);
         padding-left: 20px;
       } 
-
       .search-content-table {
         display: table;
       }
-
       .search-content {
         display: table-row;
       }
-
       .search-table-element {
         display: table-cell;
       }
-
       .searchicon {
         margin-left: 30px;
         margin-right: 30px;
       }
-
       .input-box {
         margin-left: 14px;
         width: 400%;
@@ -149,19 +130,17 @@ class SearchBar extends LitElement {
 
     constructor() {
         super();
-        this.TrueInput = ""; //this is the search bar query value from user input
-        //this.filteredInputs = [];
+        this.value = "";
       }
 
 searchInput(e) {
-  this.TrueInput = e.target.value;
+  this.value = e.target.value;
   this.dispatchEvent(new CustomEvent('value-changed', {
       detail: {
-        value: this.TrueInput
+        value: this.value
       }
   }));
 }
-
 
       render() {
         return html`
@@ -174,7 +153,7 @@ searchInput(e) {
               </simple-icon>
             </div>
             <div>
-              <input type="text" class="form-control input-box search-table-element" @input="${this.searchInput}" placeholder="Search Content, Topics, and People">
+              <input type="text" class="form-control input-box search-table-element" value="${this.value}" @input="${this.searchInput}" placeholder="Search Content, Topics, and People">
             </div>
           </div>
         </div>
