@@ -147,14 +147,6 @@
             },
             {
               "kind": "field",
-              "name": "overlayBadgeText",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Badges >\""
-            },
-            {
-              "kind": "field",
               "name": "badges",
               "type": {
                 "text": "array"
@@ -162,6 +154,16 @@
               "default": "[]",
               "privacy": "public",
               "attribute": "badges"
+            },
+            {
+              "kind": "field",
+              "name": "badgeCount",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Badges (0)\"",
+              "privacy": "public",
+              "attribute": "badge-count"
             },
             {
               "kind": "field",
@@ -178,6 +180,10 @@
             {
               "name": "badgeTitle",
               "fieldName": "badgeTitle"
+            },
+            {
+              "name": "badge-count",
+              "fieldName": "badgeCount"
             }
           ],
           "superclass": {

@@ -6,6 +6,9 @@ class BadgeList extends LitElement {
   static properties = {
     badges: { type: Array },
     badgeTitle: { type: String },
+    badgeCount: { 
+      attribute: "badge-count",
+      type: String },
   }
 
   static styles = css`
@@ -22,11 +25,11 @@ class BadgeList extends LitElement {
 
   constructor() {
     super();
-    this.overlayBadgeText = "Badges >";
     this.badges = [];
     this.getSearchResults().then((results) => {
       this.badges = results;
     });
+    this.badgeCount = "Badges (0)";
   }
 
   async getSearchResults(value = '') {
@@ -49,11 +52,15 @@ class BadgeList extends LitElement {
     this.badges = await this.getSearchResults(term);
   }
 
+  updated(){
+    this.badgeCount = "Badges (" + this.badges.length + ")";
+  }
+  
   render() {
     return html`
 
     <search-bar @value-changed="${this.handleSearchEvent}"></search-bar>
-    <div class="bottom-overlay-text">${this.overlayBadgeText}</div>
+    <div class="bottom-overlay-text">${this.badgeCount}</div>
     <div class="wrapper">
       ${this.badges.map(badge => html`
         <div class="item">

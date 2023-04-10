@@ -11,13 +11,13 @@ export default async function handler(req, res) {
             "badgeTitle": "Amazon I AM",
             "badgeIcon": "communication:vpn-key",
             "badgeIconColor": "green",
-            "badgeDescription": "Temporary description"
+            "badgeDescription": "Other stuff"
         },
         {
             "badgeTitle": "Signing up for AWS Web Services",
             "badgeIcon": "device:settings-system-daydream",
             "badgeIconColor": "orange",
-            "badgeDescription": "Temporary description"
+            "badgeDescription": "AWS Services"
         },
         {
             "badgeTitle": "AWS-LAMBDA Phase 1",
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
             "badgeTitle": "Amazon S3 Phase 1",
             "badgeIcon": "move-to-inbox",
             "badgeIconColor": "red",
-            "badgeDescription": "Temporary description"
+            "badgeDescription": "Update"
         }
     ];
     allBadges.map((badge) => {
